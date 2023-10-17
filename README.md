@@ -1,3 +1,4 @@
+![DVD](https://github.com/SivakamiKrish/Sql-Queries-project/assets/147556202/b494218c-74aa-4829-a15c-399cb5aea30e)
 # Sql-Queries-project
 
 select extract(year from payment_date),city, sum(amount) from payment p
