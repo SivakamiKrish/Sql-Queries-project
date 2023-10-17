@@ -9,32 +9,32 @@ order by extract(year from payment_date) desc
 
 Aggregate the total amount by city and year, with the years sorted in descending order.
 
--- find the film title that are less than 3 in stock using having
 select f.film_id,f.title,count(inventory_id) from film f
 join inventory i on f.film_id=i.film_id
 group by f.film_id,f.title having count(inventory_id)<3
 
--- find the list of inactive customers who had done the payment between 2007-02-01 to 2007-03-01
+Retrieve the titles of films with fewer than 3 copies in stock, using the 'HAVING' clause.
 
 select c.* from customer c
 join payment p on c.customer_id=p.customer_id 
 where p.payment_date between '2007-02-01' and '2007-03-01' and active=0
 
--- find the rental details where film name starts with C or A
+Identify the customers who are currently inactive and made payments between February 1, 2007, and March 1, 2007.
 
 select r.* from rental r
 join inventory i on r.inventory_id=i.inventory_id
 join film f on i.film_id=f.film_id
 where title like 'C%' or title like 'A%'
 
--- find the second highest payment
+Retrieve rental details for films whose titles start with the letters 'C' or 'A'.
 
 select distinct amount from payment 
 where amount not in (select max(amount) from payment
 )
 order by amount desc limit 1
 
--- Number of distinct active  customers in any 3 countries 
+Retrieve the payment amount that is the second highest.
+
 
 select distinct count(*) from customer c
 join address ad on c.address_id=ad.address_id
@@ -42,14 +42,15 @@ join city ct on ct.city_id=ad.city_id
 join country co on ct.country_id=co.country_id
 where active=1 and co.country in ('Thailand','India','Canada')
 
--- Use window function to find out count of customers per city
-
+Count the unique active customers from any three countries
 
 select distinct city,count(c.customer_id) over (partition by city) as ct
 from city cit
 join address ad on cit.city_id =ad.city_id
 join customer c on ad.address_id=c.address_id
 order by count(c.customer_id) over (partition by city) desc
+
+Utilize a window function to determine the customer count per city
 
 -- without window function
 select city,count(c.customer_id) from city ct
@@ -58,9 +59,6 @@ join customer c on ad.address_id=c.address_id
 group by city
 order by count(c.customer_id) desc
 
-
--- using case function
-
 select first_name,email,
 case when email like '%_@%.%'
 then 'valid'
@@ -68,8 +66,7 @@ else 'invalid'
 end as email_validation
 from customer
 
--- find log duration film and recent release film
-
+Using a CASE statement, validate email addresses for their validity and correctness.
 
 select title, 'long duration films' film_type from film 
 where length>90 
@@ -77,9 +74,15 @@ union
 select title,'recent release' film_type from film 
 where release_year >=2006
 
--- To find the film which are released after 2000 using CTE
+Retrieve films that have a lengthy duration and were recently released
 
 with recent_film as (
 select title from film where release_year>2000)
 
 select * from inventory where film_id in (select film_id from recent_film)
+
+Utilizing a Common Table Expression (CTE), discover films released after the year 2000.
+
+
+
+
