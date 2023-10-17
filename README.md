@@ -1,11 +1,5 @@
 # Sql-Queries-project
 
-
-https://patch.com/img/cdn20/users/22887410/20180806/021129/styles/raw/public/processed_images/548991d-1533578743-3854.jpg
-
--- Find the sum of amount by city and year
--- The year should be sorted in descending 
-
 select extract(year from payment_date),city, sum(amount) from payment p
 join customer c on p.customer_id=c.customer_id
 join address ad on c.address_id=ad.address_id
@@ -13,6 +7,7 @@ join city ct on ad.city_id=ct.city_id
 group by city, extract(year from payment_date)
 order by extract(year from payment_date) desc
 
+Aggregate the total amount by city and year, with the years sorted in descending order.
 
 -- find the film title that are less than 3 in stock using having
 select f.film_id,f.title,count(inventory_id) from film f
