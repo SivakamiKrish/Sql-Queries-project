@@ -6,8 +6,8 @@ This SQL project dataset consists of multiple tables that capture various aspect
 
 The SQL project dataset offers an opportunity to analyze customer rental behavior, identify high-spending customers, track actor movie counts, and explore films in specific genres. These queries provide valuable insights into the rental business, customer preferences, and the performance of actors and films in the dataset. Entity Relationship diagram for DvD database is shown below
 
-**ERD Diagram
-**
+ERD Diagram
+
 ![276379761-1c449a82-2d23-4267-8314-8031cd9c0aec](https://github.com/SivakamiKrish/Sql-Queries-project/assets/147556202/919451fe-1f7c-420f-8a23-e4c19d94971f)
 
 PostgreSQL Database Tables
