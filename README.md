@@ -1,6 +1,8 @@
 ![DVD](https://github.com/SivakamiKrish/Sql-Queries-project/assets/147556202/b494218c-74aa-4829-a15c-399cb5aea30e)
 # Sql-Queries-project
 
+<img align="left" width="100" height="100" src="https://picsum.photos/100/100">
+
 select extract(year from payment_date),city, sum(amount) from payment p
 join customer c on p.customer_id=c.customer_id
 join address ad on c.address_id=ad.address_id
