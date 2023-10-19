@@ -1,7 +1,6 @@
 ![DVD](https://github.com/SivakamiKrish/Sql-Queries-project/assets/147556202/b494218c-74aa-4829-a15c-399cb5aea30e)
 # Sql-Queries-project
 
-<img align="left" width="100" height="100" src="https://picsum.photos/100/100">
 
 This SQL project dataset consists of multiple tables that capture various aspects of a DVD rental system. The tables include film, category, film category, film actor, actor, language, customer, address, city, country, payment, rental, store, inventory, and staff. The dataset provides a comprehensive set of data for analysis and insights. The project involves performing several analysis tasks using SQL queries.
 
@@ -26,6 +25,9 @@ customer – stores customer data.
 address – stores address data for staff and customers
 city – stores city names.
 country – stores country names.
+
+
+SQL QUERIES
 
 select extract(year from payment_date),city, sum(amount) from payment p
 join customer c on p.customer_id=c.customer_id
